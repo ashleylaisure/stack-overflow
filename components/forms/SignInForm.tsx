@@ -1,19 +1,39 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { useRouter } from 'next/navigation'
+import { cn } from '@/lib/utils'
+import { SignIn } from '@/actions/auth'
 
 const SignInForm = () => {
+    const [error, setError] = useState<string | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
+    const router = useRouter()
 
-    const handleSubmit = () => {
-        // Handle form submission logic here
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setLoading(true)
+        setError(null)
+
+        const formData = new FormData(event.currentTarget)
+        const result = await SignIn(formData)
+
+        if(result.status === 'success'){
+            router.push('/');
+        } else {
+            setError(result.status)
+        }
+
+        setLoading(false)
     }
 
     return (
         <div>
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
-                <div>
-                    {/* <Label className="block text-sm font-medium text-dark400_light700">
+            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-3">
+                <div className="w-full flex flex-col gap-2">
+                    {/* <Label className="paragraph-medium text-dark400_light700">
                         Email
                     </Label> */}
                     <Input
@@ -21,12 +41,13 @@ const SignInForm = () => {
                         placeholder="Email"
                         id="Email"
                         name="email"
-                        className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
+                        className="form-input"
+                        required
                     />
                 </div>
 
-                <div>
-                    {/* <Label className="block text-sm font-medium text-dark400_light700">
+                <div className="w-full flex flex-col gap-2">
+                    {/* <Label className="paragraph-medium text-dark400_light700">
                         Password
                     </Label> */}
                     <Input
@@ -34,20 +55,21 @@ const SignInForm = () => {
                         placeholder="Password"
                         name="password"
                         id="password"
-                        className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
+                        className="form-input"
+                        required
                     />
                 </div>
 
                 <div className="mt-4">
-                    {/* <button
-                        disabled={loading}
+                    <Button
+                        disabled={loading} // Replace with actual loading state
                         type="submit"
-                        className={`${
-                            loading ? "bg-gray-600" : "bg-blue-600"
-                        } rounded-md w-full px-12 py-3 text-sm font-medium text-white`}
+                        className={cn('primary-gradient paragraph-medium min-h-12 w-full rounded-2 px-4 py-3 text-light-900 cursor-pointer',
+                            loading && 'opacity-50 cursor-not-allowed'
+                        )}
                         >
-                        {loading ? "Loading..." : type}
-                    </button> */}
+                        {loading ? "Loading..." : "Sign In"}
+                    </Button>
                 </div>
                 {/* {error && <p className="text-red-500">{error}</p>} */}
             </form>

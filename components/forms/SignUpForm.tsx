@@ -1,17 +1,39 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import { Label } from '../ui/label'
 import { Input } from '../ui/input'
+import { Button } from '../ui/button'
+import { useRouter } from 'next/navigation'
+import { SignUp } from '@/actions/auth'
+import { cn } from '@/lib/utils'
 
 const SignUpForm = () => {
-    const handleSubmit = () => {
-        // Handle form submission logic here
+    const [error, setError] = useState<string | null>(null)
+    const [loading, setLoading] = useState<boolean>(false)
+    const router = useRouter()
+
+    const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault()
+        setLoading(true)
+        setError(null)
+
+        const formData = new FormData(event.currentTarget)
+        const result = await SignUp(formData)
+
+        if(result.status === 'success'){
+            router.push('/');
+        } else {
+            setError(result.status)
+        }
+
+        setLoading(false)
+
     }
     return (
         <div>
-            <form onSubmit={handleSubmit} className="w-full flex flex-col gap-4">
-                <div>
-                    {/* <Label className="block text-sm font-medium text-gray-200">
+            <form onSubmit={handleSubmit} className="mt-10 space-y-6">
+                <div className="w-full flex flex-col gap-2">
+                    {/* <Label className="paragraph-medium text-dark400_light700">
                         Username
                     </Label> */}
                     <Input
@@ -19,12 +41,13 @@ const SignUpForm = () => {
                         placeholder="Username"
                         id="username"
                         name="username"
-                        className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
+                        className="form-input"
+                        required
                     />
                 </div>
 
-                <div>
-                    {/* <Label className="block text-sm font-medium text-gray-200">
+                <div className="w-full flex flex-col gap-2">
+                    {/* <Label className="paragraph-medium text-dark400_light700">
                         Email
                     </Label> */}
                     <Input
@@ -32,12 +55,13 @@ const SignUpForm = () => {
                         placeholder="Email"
                         id="Email"
                         name="email"
-                        className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
+                        className="form-input"
+                        required
                     />
                 </div>
 
-                <div>
-                    {/* <Label className="block text-sm font-medium text-gray-200">
+                <div className="w-full flex flex-col gap-2">
+                    {/* <Label className="paragraph-medium text-dark400_light700">
                         Password
                     </Label> */}
                     <Input
@@ -45,20 +69,20 @@ const SignUpForm = () => {
                         placeholder="Password"
                         name="password"
                         id="password"
-                        className="mt-1 w-full px-4 p-2  h-10 rounded-md border border-gray-200 bg-white text-sm text-gray-700"
+                        className="form-input"
                     />
                 </div>
                 
                 <div className="mt-4">
-                    {/* <button
-                        disabled={loading}
+                    <Button
+                        disabled={loading} // Replace with actual loading state
                         type="submit"
-                        className={`${
-                            loading ? "bg-gray-600" : "bg-blue-600"
-                        } rounded-md w-full px-12 py-3 text-sm font-medium text-white`}
+                        className={cn('primary-gradient paragraph-medium min-h-12 w-full rounded-2 px-4 py-3 text-light-900 cursor-pointer',
+                            loading && 'opacity-50 cursor-not-allowed'
+                        )}
                         >
-                        {loading ? "Loading..." : type}
-                    </button> */}
+                        {loading ? "Loading..." : "Sign Up"}
+                    </Button>
                 </div>
                     {/* {error && <p className="text-red-500">{error}</p>} */}
             </form>

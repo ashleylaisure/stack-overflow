@@ -8,7 +8,7 @@ const SignUp = () => {
                 title="Create an Account"
                 subtitle="To get your questions answered"
                 OAuthText="Sign up with Google"
-                formType="signUp"
+                formType="SIGN_UP"
             />
         </>
     )

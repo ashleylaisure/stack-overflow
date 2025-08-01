@@ -8,7 +8,7 @@ const SignIn = () => {
                 title="Welcome Back"
                 subtitle="To get your questions answered"
                 OAuthText="Log in with Google"
-                formType="signIn"
+                formType="SIGN_IN"
             />
         </>
     )

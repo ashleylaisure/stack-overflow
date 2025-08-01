@@ -1,13 +1,22 @@
+
 import Image from "next/image";
 import React from "react";
 
 import { Button } from "../ui/button";
-import BrandLogo from "../BrandLogo";
+import BrandLogo from "../btn/BrandLogo";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import Link from "next/link";
+import ROUTES from "@/constants/routes";
 
-const AuthForm = ({title, subtitle, OAuthText, formType} : {title: string, subtitle: string, OAuthText: string, formType: "signIn" | "signUp"}) => {
+interface AuthFormProps {
+    title: string;
+    subtitle: string;
+    OAuthText: string;
+    formType: "SIGN_IN" | "SIGN_UP";
+}
+
+const AuthForm = ({title, subtitle, OAuthText, formType} : AuthFormProps) => {
 
     return (
         <div>
@@ -21,15 +30,15 @@ const AuthForm = ({title, subtitle, OAuthText, formType} : {title: string, subti
                 </div>
             </div>
 
-            {formType === "signIn" ? <SignInForm /> : <SignUpForm />}
+            {formType === "SIGN_IN" ? <SignInForm /> : <SignUpForm />}
 
-            <div className="flex items-center justify-center gap-4 mb-4">
+            <div className="flex items-center justify-center gap-4 my-4">
                 <hr className="flex-grow border-t-1.5 border-dark-500 dark:border-light-400" />
                 <span className="text-xs text-dark500_light400 font-medium">OR</span>
                 <hr className="flex-grow border-t-1.5 border-dark-500 dark:border-light-400" />
             </div>
 
-            <Button className="primary-button w-full">
+            <Button className="button-primary w-full">
                 <Image
                     src="/icons/google.svg"
                     alt="Google Logo"
@@ -40,17 +49,17 @@ const AuthForm = ({title, subtitle, OAuthText, formType} : {title: string, subti
                 <span>{OAuthText}</span>
             </Button>
 
-            {formType === "signIn" ? (
+            {formType === "SIGN_IN" ? (
                 <p className="text-center text-sm text-dark500_light400 mt-4">
                     Don&apos;t have an account?{" "}
-                    <Link href="/sign-up" className="text-blue-500 hover:underline">
+                    <Link href={ROUTES.SIGN_UP} className="paragraph-semibold primary-text-gradient">
                         Sign Up
                     </Link>
                 </p>
             ) : (
                 <p className="text-center text-sm text-dark500_light400 mt-4">
                     Already have an account?{" "}
-                    <Link href="/sign-in" className="text-blue-500 hover:underline">
+                    <Link href={ROUTES.SIGN_IN} className="paragraph-semibold primary-text-gradient">
                         Sign In
                     </Link>
                 </p>
@@ -58,7 +67,7 @@ const AuthForm = ({title, subtitle, OAuthText, formType} : {title: string, subti
                 
                 <p className="text-center text-sm text-dark500_light400 mt-4">
                     Forgot Your Password?{" "}
-                    <Link href="/forgot-password" className="text-blue-500 hover:underline">
+                    <Link href={ROUTES.FORGOT_PASSWORD} className="paragraph-semibold primary-text-gradient">
                         Reset Password
                     </Link>
                 </p>

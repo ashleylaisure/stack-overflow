@@ -312,7 +312,7 @@
 }
 
 @utility button-primary {
-  @apply background-dark400_light900 body-medium text-dark200_light800 min-h-12 flex-1 rounded-2 p-4;
+  @apply background-dark400_light900 body-medium text-dark200_light800 min-h-12 flex-1 rounded-2 p-4 cursor-pointer transition-colors duration-200 ease-in-out hover:background-light800_dark300; 
 }
 
 @utility btn {
@@ -325,6 +325,10 @@
 
 @utility btn-tertiary {
   @apply bg-light-700! dark:bg-dark-300!;
+}
+
+@utility form-input {
+  @apply paragraph-regular background-light900_dark300 light-border-2 text-dark300_light700 no-focus min-h-12 rounded-1.5 border;
 }
 
 @utility no-focus {

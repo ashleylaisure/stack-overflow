@@ -1,11 +1,12 @@
 import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
+import ROUTES from '@/constants/routes';
 
 const BrandLogo = () => {
     return (
         <div>
-            <Link href="/" className="flex items-center gap-1">
+            <Link href={ROUTES.LANDING_PAGE} className="flex items-center gap-1">
                 <Image
                     src="/images/site-logo.svg"
                     width={23}
