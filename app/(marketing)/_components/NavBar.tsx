@@ -6,9 +6,9 @@ export function NavBar() {
     return (
         
         <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
-            <Link href="/" className="mr-auto">
-                <BrandLogo />
-            </Link>
+
+            <BrandLogo />
+
 
             <Link className="text-lg" href="/dashboard">
                 dashboard
@@ -27,10 +27,10 @@ export function NavBar() {
             </Link>
             
             <div className="text-lg">
-                <Link href="/signin" className="mr-4">
+                <Link href="/sign-in" className="mr-4">
                     Sign In
                 </Link>
-                <Link href="/register" className="">
+                <Link href="/sign-up" className="">
                     <Button>Sign Up</Button>
                 </Link>
             </div>
