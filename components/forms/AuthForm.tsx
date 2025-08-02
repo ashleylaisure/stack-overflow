@@ -3,7 +3,7 @@ import Image from "next/image";
 import React from "react";
 
 import { Button } from "../ui/button";
-import BrandLogo from "../btn/BrandLogo";
+import BrandLogo from "../BrandLogo";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
 import Link from "next/link";

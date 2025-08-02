@@ -2,10 +2,12 @@ import React from 'react'
 import Image from "next/image";
 import Link from "next/link";
 import ROUTES from '@/constants/routes';
+import { cn } from '@/lib/utils';
 
-const BrandLogo = () => {
+const BrandLogo = ({isMobileNav} : {isMobileNav?: boolean}) => {
     return (
         <div>
+            {/* TODO: if user is logged in go to dashboard if not go to landing page */}
             <Link href={ROUTES.LANDING_PAGE} className="flex items-center gap-1">
                 <Image
                     src="/images/site-logo.svg"
@@ -14,7 +16,9 @@ const BrandLogo = () => {
                     alt="DevFlow Logo"
                 />
 
-                <p className="h2-bold font-space-grotesk text-dark-100 dark:text-light-900 max-sm:hidden">
+                <p className={cn("h2-bold font-space-grotesk text-dark-100 dark:text-light-900",
+                    isMobileNav ? "" : "max-sm:hidden"
+                )}>
                     Dev<span className="text-primary-500">Flow</span>
                 </p>
             </Link>

@@ -1,12 +1,12 @@
 import React from 'react'
 
-const HomePage = () => {
+const Dashboard = () => {
     return (
         <div>
-            <h1>Welcome to the Home Page</h1>
+            <h1 className="text-destructive">Welcome to the Dashboard</h1>
             <p>This is the main content area.</p>
         </div>
     )
 }
 
-export default HomePage
+export default Dashboard
