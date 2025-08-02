@@ -1,35 +1,35 @@
 export const sidebarLinks = [
     {
-        label: 'Dashboard',
-        route: '/',
-        imgURL: '/icons/home.svg',
+        title: 'Dashboard',
+        url: '/',
+        icon: '/icons/home.svg',
     }, {
-        label: 'Questions',
-        route: '/questions',
-        imgURL: '/icons/question.svg',
+        title: 'Questions',
+        url: '/questions',
+        icon: '/icons/question.svg',
     }, {
-        label: 'Community',
-        route: '/community',
-        imgURL: '/icons/users.svg',
+        title: 'Community',
+        url: '/community',
+        icon: '/icons/users.svg',
     }, {
-        label: 'Collections',
-        route: '/collections',
-        imgURL: '/icons/star.svg',
+        title: 'Collections',
+        url: '/collections',
+        icon: '/icons/star.svg',
     }, {
-        label: 'Find Jobs',
-        route: '/find-jobs',
-        imgURL: '/icons/suitcase.svg',
+        title: 'Find Jobs',
+        url: '/find-jobs',
+        icon: '/icons/suitcase.svg',
     }, {
-        label: 'Find Tags',
-        route: '/find-tags',
-        imgURL: '/icons/tag.svg',
+        title: 'Find Tags',
+        url: '/find-tags',
+        icon: '/icons/tag.svg',
     }, {
-        label: 'Profile',
-        route: '/profile',
-        imgURL: '/icons/user.svg',
+        title: 'Profile',
+        url: '/profile',
+        icon: '/icons/user.svg',
     }, {
-        label: 'Ask a question',
-        route: '/ask-question',
-        imgURL: '/icons/question.svg',
+        title: 'Ask a question',
+        url: '/ask-question',
+        icon: '/icons/question.svg',
     }
 ]
