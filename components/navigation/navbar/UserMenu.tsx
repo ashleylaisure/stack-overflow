@@ -21,6 +21,7 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { createClient } from "@/lib/supabase/server"
 import Image from "next/image"
 import { LogOut, Settings, User } from "lucide-react"
+import Link from "next/link"
 
 const UserMenu = async () => {
     const supabase = await createClient();
@@ -44,8 +45,10 @@ const UserMenu = async () => {
                     <DropdownMenuLabel>{user?.email}</DropdownMenuLabel>
                     <DropdownMenuGroup>
                         <DropdownMenuItem>
-                            <User className="h-[1.2rem] w-[1.2rem] mr-2" />
-                            Profile
+                            <Link href={`/profile/${user?.id}`} className="flex items-center gap-4">
+                                <User className="h-[1.2rem] w-[1.2rem]" />
+                                Profile
+                            </Link>
                         </DropdownMenuItem>
                         <DropdownMenuItem>
                             <Settings className="h-[1.2rem] w-[1.2rem] mr-2" />

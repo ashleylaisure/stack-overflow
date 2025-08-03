@@ -13,18 +13,15 @@ const Navbar = async () => {
     
 
     return (
-        <nav className="flex-between background-light900_dark200 fixed z-50 w-full gap-5 p-6 shadow-light-300 dark:shadow-none sm:px-12">
-            <div className="flex items-center gap-2">
-                {/* LEFT */}
-                <SidebarTrigger />
-                {/* <MobileNavigation /> */}
-            </div>
-            
+        <nav className="p-4 flex items-center justify-between sticky top-0 bg-background z-10">
+
+            {/* LEFT */}
+            <SidebarTrigger />
 
             <p>Global Search</p>
 
             {/* RIGHT */}
-            <div className="flex-between gap-3">
+            <div className="flex items-center gap-4 mr-4">
                 <Theme />
                 <UserMenu />
             </div>
