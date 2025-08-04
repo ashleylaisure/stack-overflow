@@ -7,8 +7,9 @@ const ROUTES = {
     ASK_QUESTION: '/ask-question',
     QUESTIONS: '/questions',
     QUESTION_DETAIL: (id: string) => `/questions/${id}`,
-    PROFILE: '/profile',
-    EDIT_PROFILE: '/profile/edit',
+    TAGS: (id: string) => `/tags/${id}`,
+    PROFILE: (id: string) => `/profile/${id}`,
+    EDIT_PROFILE: (id: string) => `/profile/${id}/edit`,
     SETTINGS: '/settings',
     NOT_FOUND: '/404',
 };
