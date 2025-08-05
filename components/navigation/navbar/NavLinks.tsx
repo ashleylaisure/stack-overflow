@@ -36,10 +36,10 @@ const NavLinks = ({isMobile = false} : {isMobile?: boolean}) => {
                                 width={20}
                                 height={20}
                                 className={cn(
-                                    !isActive ? 'invert-colors' : 'invert-colors opacity-60'
+                                    isActive ? 'invert-colors' : 'invert-colors opacity-60'
                                 )}
                                 />
-                            <p className={cn(isActive ? 'base-bold' : 'base-medium')}>
+                            <p className={cn(isActive ? 'medium' : '', 'text-sm text-dark300_light900')}>
                                 {link.title}
                             </p>
                         </Link>
