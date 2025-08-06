@@ -2,6 +2,7 @@
 import { revalidatePath } from 'next/cache'
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { da } from 'date-fns/locale'
 // import { headers } from 'next/headers'
 
 export async function SignUp(formData: FormData) {
@@ -72,11 +73,20 @@ export async function SignOut() {
     const { error } = await supabase.auth.signOut()
 
     if (error) {
-        return {
-            status: error?.message,
-        };
+        redirect('/error')
     }
 
     revalidatePath('/', 'layout')
-    redirect('/landing-page')
+    redirect('/sign-in')
+}
+
+export async function getUserSession() {
+    const supabase = await createClient()
+    const { data, error } = await supabase.auth.getUser()
+
+    if (error) {
+        return null;
+    }
+
+    return {status: 'success', user: data?.user};
 }

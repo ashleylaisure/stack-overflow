@@ -1,6 +1,12 @@
+import { getUserSession } from '@/lib/supabase/actions/auth'
+import { redirect } from 'next/navigation';
 import React, { ReactNode } from 'react'
 
-export default function AuthLayout({children}: {children: ReactNode}) {
+export default async function AuthLayout({children}: {children: ReactNode}) {
+    const response = await getUserSession();
+    if (response?.user) {
+        redirect('/');
+    }
     return (
         <main className="flex-center min-h-screen flex-col bg-auth-light 
         dark:bg-auth-dark bg-cover bg-no-repeat bg-center px-4 py-10">

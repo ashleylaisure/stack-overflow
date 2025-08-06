@@ -4,7 +4,7 @@ import { Label } from '../ui/label'
 import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
-import { SignUp } from '@/actions/auth'
+import { SignUp } from '@/lib/supabase/actions/auth'
 import { cn } from '@/lib/utils'
 
 const SignUpForm = () => {

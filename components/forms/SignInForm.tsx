@@ -5,7 +5,7 @@ import { Input } from '../ui/input'
 import { Button } from '../ui/button'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/lib/utils'
-import { SignIn } from '@/actions/auth'
+import { SignIn } from '@/lib/supabase/actions/auth'
 
 const SignInForm = () => {
     const [error, setError] = useState<string | null>(null)
